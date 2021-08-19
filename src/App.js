@@ -9,17 +9,16 @@ const App = () => {
   const [isLoading, setLoading] = useState(true);
   const [query, getQuery] = useState("");
 
-  const fetchItems = async () => {
-    const resp = await fetch(
-      `https://www.breakingbadapi.com/api/characters?name=${query}`
-    );
-    const respData = await resp.json();
-    // console.log(respData);
-    setItems(respData);
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const fetchItems = async () => {
+      const resp = await fetch(
+        `https://www.breakingbadapi.com/api/characters?name=${query}`
+      );
+      const respData = await resp.json();
+      // console.log(respData);
+      setItems(respData);
+      setLoading(false);
+    };
     fetchItems();
   }, [query]);
 
